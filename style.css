@@ -45,10 +45,11 @@ body::after {
     #7afcff,
     #feff9c,
     #fff740,
-    #ff7eb3
+    #ff7eb3,
+    #2f2a2c
   );
   background-size: 400% 400%;
-  animation: flow 18s ease infinite;
+  animation: flow 5s ease infinite;
   opacity: 0.18;
   z-index: -3;
 }
@@ -60,77 +61,86 @@ body::after {
 }
 
 /* -------------------- TITRE PRINCIPAL -------------------- */
-header h1 {
-  font-size: 0px;
-  font-weight: 900;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 40px;
-}
+/* -------------------- HEADER — PREMIUM GLASSMORPHISM -------------------- */
+/* -------------------- HEADER — BLADE SHAPE -------------------- */
+/* -------------------- HEADER — HALO ARC -------------------- */
+/* -------------------- HEADER — CRYSTAL SHARD -------------------- */
+/* -------------------- HEADER — RIBBON FLOW -------------------- */
+/* -------------------- HEADER — HALO ARC -------------------- */
+/* -------------------- HEADER — DEMI-CERCLE + TEXTE -------------------- */
+/* -------------------- HEADER — DEMI-CERCLE HORIZONTAL -------------------- */
+/* -------------------- HEADER — DEMI-CERCLE HORIZONTAL -------------------- */
+/* -------------------- HEADER — DEMI-CERCLE ÉTENDU -------------------- */
+/* -------------------- HEADER — GRAND CERCLE FLOU ÉTENDU -------------------- */
 header {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 60px;
-  padding: 100px 60px;
+  padding: 120px 70px;
   overflow: hidden;
 }
 
-/* CERCLE À GAUCHE */
+/* GRAND CERCLE FLOU (même forme que ton image, juste plus étendu) */
 header::before {
   content: "CSS Zen Garden";
-  position: relative;
-  z-index: 3;
-  width: 220px;
-  height: 220px;
+  position: absolute;
+  left: -100px; /* étendu vers la gauche */
+  top: 50%;
+  transform: translateY(-50%);
+  
+  width: 520px;   /* plus large */
+  height: 520px;  /* même hauteur pour garder la forme */
+  
+  background: radial-gradient(circle at 70% 50%, #c3e2f4, #312d2f);
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #f7d3b8, #e57a92);
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+
+  font-size: 2.4rem;
   font-weight: 800;
   color: #ffffff;
-  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
-  flex-shrink: 0;
-}
 
-/* FORME GÉOMÉTRIQUE INCLINÉE À DROITE */
-header::after {
-  content: "";
-  position: absolute;
-  right: -140px;
-  top: 0;
-  width: 560px;
-  height: 100%;
-  background: linear-gradient(135deg, #e57a92, #f2b08b);
-  clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
-  transform: skewX(-10deg);
-  opacity: 0.35;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 0 60px rgba(255,255,255,0.18),
+    inset 0 0 50px rgba(255,255,255,0.12);
+
   z-index: 1;
 }
 
-/* TEXTE À DROITE DU CERCLE */
+/* -------------------- TEXTE À DROITE -------------------- */
+header h1 {
+  font-size: 0; /* masque le titre original */
+}
 
 header h2 {
   position: relative;
-  z-index: 4;
-  font-size: 3rem;
+  z-index: 2;
+  font-size: 3.4rem;
   font-weight: 900;
-  color: #171616;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 20px;
+  left: 380px;
 }
 
 header p {
   position: relative;
-  z-index: 4;
+  z-index: 2;
   font-size: 1.2rem;
   max-width: 480px;
-  color: #ffffff;
+  color: #e8e8ea;
   line-height: 1.7;
 }
+
+
+
+
 /* -------------------- RESET -------------------- */
 
 
