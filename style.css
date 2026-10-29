@@ -1,0 +1,244 @@
+/* -------------------- RESET -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #0f0f11;
+  color: #f5f5f7;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* -------------------- BACKGROUND PARALLAX -------------------- */
+body::before {
+  content: "CSS ZEN GARDEN";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 180px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: 12px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg,
+    #ff7eb3,
+    #ff65a3,
+    #7afcff,
+    #feff9c,
+    #fff740,
+    #ff7eb3
+  );
+  background-size: 400% 400%;
+  animation: flow 18s ease infinite;
+  opacity: 0.18;
+  z-index: -3;
+}
+
+@keyframes flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------------------- TITRE PRINCIPAL -------------------- */
+header h1 {
+  font-size: 60px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* -------------------- LIENS -------------------- */
+a {
+  color: #ffd6e8 !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: #7afcff !important;
+  text-decoration: underline;
+}
+
+/* -------------------- INFOBULLES (ABBR) — VISIBLES -------------------- */
+abbr {
+  color: #ffe3f2;
+  font-weight: 700;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.12);
+  text-decoration: underline dotted #ffd6e8;
+  transition: all 0.25s ease;
+}
+
+abbr:hover {
+  color: #7afcff;
+  background: rgba(122,252,255,0.18);
+  text-decoration-color: #7afcff;
+}
+
+/* -------------------- PAGE WRAPPER -------------------- */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 40px;
+}
+
+/* -------------------- INTRO -------------------- */
+.intro {
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(18px);
+  padding: 50px 45px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.intro h2 {
+  font-size: 24px;
+  color: #ffd6e8;
+}
+
+/* -------------------- BLOCS — EMPILÉS -------------------- */
+.main.supporting {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.main.supporting > div {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 35px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.main.supporting > div:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.5);
+}
+
+/* -------------------- BARRE À GAUCHE DES TITRES -------------------- */
+.main.supporting h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.main.supporting h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 10px;
+  height: 90%;
+  background: linear-gradient(180deg, #7afcff, #ff7eb3);
+  border-radius: 4px;
+}
+
+/* -------------------- PARAGRAPHES -------------------- */
+.main.supporting p {
+  font-size: 18px;
+  color: #e8e8ea;
+  margin-bottom: 14px;
+}
+
+/* -------------------- AUSKLAPPEN — STYLE COMME L’IMAGE -------------------- */
+
+/* Premier paragraphe : toujours visible */
+.main.supporting p:first-of-type {
+  display: block;
+}
+
+/* Paragraphes repliés */
+.collapsible {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.45s ease;
+}
+
+/* Déplier au survol */
+.main.supporting > div:hover .collapsible {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Déplier au clic */
+.main.supporting > div:active .collapsible {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* -------------------- SIDEBAR — PLUS VISIBLE -------------------- */
+.sidebar .wrapper {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  padding: 25px 22px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+.sidebar h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffd6e8;
+  margin-bottom: 12px;
+}
+
+.sidebar a:hover {
+  color: #7afcff;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+footer a {
+  margin-right: 15px;
+  font-weight: 700;
+  color: #ffd6e8;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 900px) {
+  .page-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
