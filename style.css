@@ -1,4 +1,4 @@
-/* -------------------- HEADER — CERCLE + FORME INCLINÉE -------------------- */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,319 +11,403 @@ html {
 
 body {
   font-family: "Inter", system-ui, sans-serif;
-  background: #0f0f11;
-  color: #f5f5f7;
-  line-height: 1.7;
+
+  background:
+    radial-gradient(
+      ellipse at 10% 10%,
+      rgba(255, 79, 163, 0.13),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 90% 25%,
+      rgba(139, 92, 246, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 50% 85%,
+      rgba(34, 211, 238, 0.09),
+      transparent 40%
+    ),
+    #080b16;
+
+  background-attachment: fixed;
+
+  color: #dedee6;
+  line-height: 1.5;
   overflow-x: hidden;
+  min-height: 100vh;
 }
-
-/* -------------------- BACKGROUND PARALLAX -------------------- */
-body::before {
-  content: "CSS ZEN GARDEN";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-25deg);
-  font-size: 180px;
-  font-weight: 900;
-  color: rgb(109, 106, 106);
-  letter-spacing: 12px;
-  pointer-events: none;
-  z-index: -2;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg,
-    #ebe9ea,
-    #5e5257,
-    #7afcff,
-    #feff9c,
-    #fff740,
-    #ff7eb3,
-    #2f2a2c
-  );
-  background-size: 400% 400%;
-  animation: flow 5s ease infinite;
-  opacity: 0.18;
-  z-index: -3;
-}
-
-@keyframes flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* -------------------- TITRE PRINCIPAL -------------------- */
-/* -------------------- HEADER — PREMIUM GLASSMORPHISM -------------------- */
-/* -------------------- HEADER — BLADE SHAPE -------------------- */
-/* -------------------- HEADER — HALO ARC -------------------- */
-/* -------------------- HEADER — CRYSTAL SHARD -------------------- */
-/* -------------------- HEADER — RIBBON FLOW -------------------- */
-/* -------------------- HEADER — HALO ARC -------------------- */
-/* -------------------- HEADER — DEMI-CERCLE + TEXTE -------------------- */
-/* -------------------- HEADER — DEMI-CERCLE HORIZONTAL -------------------- */
-/* -------------------- HEADER — DEMI-CERCLE HORIZONTAL -------------------- */
-/* -------------------- HEADER — DEMI-CERCLE ÉTENDU -------------------- */
-/* -------------------- HEADER — GRAND CERCLE FLOU ÉTENDU -------------------- */
-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 120px 70px;
-  overflow: hidden;
-}
-
-/* GRAND CERCLE FLOU (même forme que ton image, juste plus étendu) */
-header::before {
-  content: "CSS Zen Garden";
-  position: absolute;
-  left: -100px; /* étendu vers la gauche */
-  top: 50%;
-  transform: translateY(-50%);
-  
-  width: 520px;   /* plus large */
-  height: 520px;  /* même hauteur pour garder la forme */
-  
-  background: radial-gradient(circle at 70% 50%, #c3e2f4, #312d2f);
-  border-radius: 50%;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: #ffffff;
-
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-
-  box-shadow:
-    0 0 60px rgba(255,255,255,0.18),
-    inset 0 0 50px rgba(255,255,255,0.12);
-
-  z-index: 1;
-}
-
-/* -------------------- TEXTE À DROITE -------------------- */
-header h1 {
-  font-size: 0; /* masque le titre original */
-}
-
-header h2 {
-  position: relative;
-  z-index: 2;
-  font-size: 3.4rem;
-  font-weight: 900;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-  left: 380px;
-}
-
-header p {
-  position: relative;
-  z-index: 2;
-  font-size: 1.2rem;
-  max-width: 480px;
-  color: #e8e8ea;
-  line-height: 1.7;
-}
-
-
-
-
-/* -------------------- RESET -------------------- */
-
-
-/* -------------------- LIENS -------------------- */
-a {
-  color: #bd95d0 !important;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-a:hover {
-  color: #0be624 !important;
-  text-decoration: underline;
-}
-
-/* -------------------- INFOBULLES (ABBR) — VISIBLES -------------------- */
-abbr {
-  color: #ffe3f2;
-  font-weight: 700;
-  padding: 2px 4px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.12);
-  text-decoration: underline dotted #ffd6e8;
-  transition: all 0.25s ease;
-}
-
-abbr:hover {
-  color: #7afcff;
-  background: rgba(122,252,255,0.18);
-  text-decoration-color: #7afcff;
-}
-
-/* -------------------- PAGE WRAPPER -------------------- */
 .page-wrapper {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 30px;
   display: grid;
-  grid-template-columns: 1fr 350px;
-  gap: 40px;
-}
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas:
+    "header header header header"
+    "summary summary summary summary"
+    "preamble explanation participation benefits"
+    "requirements requirements requirements requirements"
+    "footer footer footer footer"
+    "sidebar sidebar sidebar sidebar";
+  width: calc(100% - 40px);
+  max-width: 1320px;
+  margin: 0 auto;
 
-/* -------------------- INTRO -------------------- */
-.intro {
-  grid-column: 1 / -1;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-  padding: 50px 45px;
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
+  padding-bottom: 60px;
 }
-
-.intro h2 {
-  font-size: 24px;
-  color: #ffd6e8;
-}
-
-/* -------------------- BLOCS — EMPILÉS -------------------- */
+.intro,
 .main.supporting {
+  display: contents;
+}
+header[role="banner"] {
+  grid-area: header;
+  text-align: center;
+  padding: 70px 20px 25px;
+}
+header h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(
+    90deg,
+    #f9a8d4,
+    #c4b5fd,
+    #67e8f9
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.3s ease;
+}
+header h1:hover {
+  filter: brightness(1.3);
+}
+header h2 {
+  margin-top: 12px;
+  color: #b8bfd4;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+header h2 abbr {
+  color: #ff9bd2;
+  text-decoration: none;
+  border-bottom: 2px solid #c084fc;
+  text-shadow: 0 0 15px rgba(255, 155, 210, 0.35);
+  transition: all 0.3s ease;
+}
+header h2 abbr:hover {
+  color: #ffffff;
+  border-bottom-color: #67e8f9;
+  text-shadow: 0 0 18px rgba(103, 232, 249, 0.6);
+}
+.summary {
+  grid-area: summary;
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 15px;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: #c6c9d8;
+  backdrop-filter: blur(10px);
+}
+.summary p {
+  margin-bottom: 10px;
+}
+.summary a {
+  color: #f0abfc;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.summary a:hover {
+  color: #67e8f9;
+}
+.preamble,
+.main.supporting > div {
+  padding: 22px;
+  border-radius: 25px;
+  min-height: 450px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  align-self: start;
 }
-
-.main.supporting > div {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  padding: 35px 30px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.main.supporting > div:hover {
+.preamble:hover,
+.main.supporting > div:not(.requirements):hover {
   transform: translateY(-12px);
-  box-shadow: 0 25px 55px rgba(0,0,0,0.5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
-
-/* -------------------- BARRE À GAUCHE DES TITRES -------------------- */
-.main.supporting h3 {
-  font-size: 28px;
+.preamble {
+  grid-area: preamble;
+  background: linear-gradient(145deg, #d9efff, #b8d8f0);
+  color: #26364a;
+}
+.explanation {
+  grid-area: explanation;
+  background: linear-gradient(145deg, #ffe1ec, #f8c8df);
+  color: #493047;
+}
+.participation {
+  grid-area: participation;
+  background: linear-gradient(145deg, #e8ddff, #cfc0f5);
+  color: #382b56;
+}
+.benefits {
+  grid-area: benefits;
+  background: linear-gradient(145deg, #d8f5e8, #b9e6d2);
+  color: #25483b;
+}
+.preamble h3,
+.main.supporting > div h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.preamble p,
+.main.supporting > div p {
+  line-height: 1.7;
+  font-size: 0.96rem;
+}
+.preamble a,
+.main.supporting > div:not(.requirements) a {
+  color: #7542a5;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 15px;
-  padding-left: 22px;
-  position: relative;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.25s ease;
+}
+.preamble a:hover,
+.main.supporting > div:not(.requirements) a:hover {
+  color: #bd287c;
+  border-bottom-color: #bd287c;
+}
+.requirements {
+  grid-area: requirements;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+
+  padding: 40px;
+  min-height: auto;
+
+  background: linear-gradient(
+    135deg,
+    #20283d,
+    #30344e,
+    #25243d
+  );
+
+  border: 1px solid rgba(192, 132, 252, 0.55);
+  border-radius: 28px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+  line-height: 1.6;
 }
 
-.main.supporting h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 10px;
-  height: 90%;
-  background: linear-gradient(180deg, #7afcff, #ff7eb3);
-  border-radius: 4px;
+.requirements h3 {
+  grid-column: 1 / -1;
+  color: #e9b5ff;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
 }
 
-/* -------------------- PARAGRAPHES -------------------- */
-.main.supporting p {
-  font-size: 18px;
-  color: #e8e8ea;
-  margin-bottom: 14px;
+.requirements p {
+  color: #d2d5e5;
+  line-height: 1.8;
 }
-
-/* -------------------- AUSKLAPPEN — STYLE COMME L’IMAGE -------------------- */
-
-/* Premier paragraphe : toujours visible */
-.main.supporting p:first-of-type {
-  display: block;
-}
-
-/* Paragraphes repliés */
-.collapsible {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.45s ease, opacity 0.45s ease;
-}
-
-/* Déplier au survol */
-.main.supporting > div:hover .collapsible {
-  max-height: 500px;
-  opacity: 1;
-}
-
-/* Déplier au clic */
-.main.supporting > div:active .collapsible {
-  max-height: 500px;
-  opacity: 1;
-}
-
-/* -------------------- SIDEBAR — PLUS VISIBLE -------------------- */
-.sidebar .wrapper {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(18px);
-  padding: 25px 22px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-}
-
-.sidebar h3 {
-  font-size: 22px;
+.requirements abbr {
+  color: #f0abfc;
+  text-decoration: none;
+  border-bottom: 1px solid #c084fc;
   font-weight: 700;
-  color: #ffd6e8;
-  margin-bottom: 12px;
 }
-
-.sidebar a:hover {
-  color: #7afcff;
+.requirements a {
+  color: #67e8f9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
-
-/* -------------------- FOOTER -------------------- */
+.requirements a:hover {
+  color: #ff9bd2;
+  background: rgba(255, 155, 210, 0.12);
+  border-radius: 5px;
+  padding: 2px 5px;
+  text-shadow: 0 0 10px rgba(255, 155, 210, 0.4);
+}
+.requirements p[role="contentinfo"] {
+  grid-column: 1 / -1;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #9fa8c7;
+  font-size: 0.9rem;
+}
 footer {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  grid-area: footer;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  padding: 25px 10px;
 }
 
 footer a {
-  margin-right: 15px;
+  display: inline-block;
+  padding: 12px 22px;
+
+  color: #f0abfc;
+  text-decoration: none;
   font-weight: 700;
-  color: #ffd6e8;
-}
-.design-selection h3{
-  color: white;
-}
-.design-archives h3{
-  color: white;
-}
-.zen-resources h3{
-  color: white;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(240, 171, 252, 0.4);
+  border-radius: 30px;
+
+  transition: all 0.3s ease;
 }
 
-/* -------------------- RESPONSIVE -------------------- */
-@media (max-width: 900px) {
+footer a:hover {
+  color: #67e8f9;
+  border-color: #67e8f9;
+  background: rgba(103, 232, 249, 0.12);
+  box-shadow: 0 0 15px rgba(103, 232, 249, 0.2);
+  transform: translateY(-4px);
+}
+.sidebar {
+  grid-area: sidebar;
+  width: 100%;
+}
+
+.sidebar .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.sidebar .wrapper > div {
+  padding: 25px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(35, 42, 66, 0.95),
+    rgba(27, 30, 51, 0.95)
+  );
+
+  border: 1px solid rgba(240, 171, 252, 0.2);
+  border-radius: 22px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+  transition: 0.3s ease;
+}
+
+.sidebar .wrapper > div:hover {
+  transform: translateY(-7px);
+  border-color: #c084fc;
+  box-shadow: 0 15px 35px rgba(192, 132, 252, 0.12);
+}
+
+.sidebar h3 {
+  color: #f0abfc;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.sidebar p,
+.sidebar li {
+  color: #c6c9d8;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar a {
+  color: #a5e9f5;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.sidebar a:hover {
+  color: #ff9bd2;
+  text-shadow: 0 0 10px rgba(255, 155, 210, 0.3);
+}
+@media (max-width: 1100px) {
+  .page-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-areas:
+      "header header"
+      "summary summary"
+      "preamble explanation"
+      "participation benefits"
+      "requirements requirements"
+      "footer footer"
+      "sidebar sidebar";
+  }
+
+  .sidebar .wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
   .page-wrapper {
     grid-template-columns: 1fr;
+
+    grid-template-areas:
+      "header"
+      "summary"
+      "preamble"
+      "explanation"
+      "participation"
+      "benefits"
+      "requirements"
+      "footer"
+      "sidebar";
+
+    width: calc(100% - 30px);
+    gap: 20px;
+  }
+
+  header[role="banner"] {
+    padding-top: 45px;
+  }
+
+  .preamble,
+  .main.supporting > div {
+    min-height: auto;
+  }
+
+  .requirements {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+
+  .requirements h3,
+  .requirements p[role="contentinfo"] {
+    grid-column: 1;
+  }
+
+  .sidebar .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    gap: 12px;
   }
 }
